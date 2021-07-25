@@ -6,13 +6,13 @@ export {
 }
 
 function search(req, res) {
-    axios.get(`http://www.omdbapi.com/?t=${req.body.search}&apikey=${process.env.API_KEY}`)
+    axios.get(`http://www.omdbapi.com/?s=${req.body.search}&apikey=${process.env.API_KEY}`)
     .then((response) => {
-      //console.log(response.data)
+      console.log(response.data.Search)
       //res.redirect("/")
       res.render("movies/new", {
         title: "Search Results",
-        results: response.data,
+        results: response.data.Search,
         user: req.user ? req.user : null
       })
     })
