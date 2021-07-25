@@ -5,24 +5,21 @@
   <span class="mt-5"></span>
   <div class="d-flex flex-column bd-highlight mt-5 text-center align-items-center">
     <div class="p-2 flex-xl-grow-1">
-  <h1>Hello, <%= user ? user.profile.name : "there" %>
-  </h1>
-  <button class="btn btn-default"></button>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img 
-        src="<%= user.profile.avatar %>" 
-        alt="<%= user.profile.name %> avatar"
-      >
-    </div>
-  <% } %>
-
-  <section >
-  <label for="exampleDataList" class="form-label"><h1>Search Movies</h1></label>
-  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-  <datalist id="datalistOptions">
-  </datalist>
-  </section>
+  <% if (user) { %>  
+     <!-- <h1>Hello, <%= user ? user.profile.name : "there" %></h1> -->
+    <h1>
+      Hello, <%= user.profile.name %> 
+    </h1>
+    <section >
+    <label for="exampleDataList" class="form-label"><h1>Feel Like a Movie?</h1></label>
+    <form action="/movies/search" method="POST" class="d-flex align-items-center me-3">
+      <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    </section>
+  <% } else { %>
+    <h1> Hello, there</h1>
+    <h1> Please log-in to proceed</h1>
+  <% } %>  
 </div>
 </div>
 </main>
