@@ -13,6 +13,7 @@ function search(req, res) {
       res.render("movies/new", {
         title: "Search Results",
         results: response.data,
+        user: req.user ? req.user : null
       })
     })
     .catch(err => {
