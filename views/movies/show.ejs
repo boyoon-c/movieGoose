@@ -6,9 +6,9 @@
         <h2 class="fw-6 text-white pt-4 text-center">
             <%= apiResult.Title %> 
         </h2>
-        <div class = "container bg-dark align-middle">
+        <div class = "container-fluid bg-dark align-middle ">
             <div class="row">
-                <div class="col">
+                <div class="col mt-3">
                 <img 
                 width = "100%" 
                 height = "500"
@@ -55,7 +55,38 @@
                       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body fs-5">
                             <%# This is where all the reviews are going to be stacked  %> 
-                            Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.
+                            <form action="/reviews/<%=apiResult._id%>" method="POST">
+                                <div class="mb-3 mt-4">
+                                    <label 
+                                      for="exampleFormControlTextarea1" 
+                                      class="form-label text-light"
+                                    >
+                                      Leave a review:
+                                    </label>
+                                    <textarea 
+                                      name="content" 
+                                      class="form-control" 
+                                      id="exampleFormControlTextarea1" 
+                                      rows="3"
+                                    ></textarea>
+                                    <select 
+                                      name="rating" 
+                                      class="form-select" 
+                                    >
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                      <option value="6">6</option>
+                                      <option value="7">7</option>
+                                      <option value="8">8</option>
+                                      <option value="9">9</option>
+                                      <option value="10">10</option>
+                                    </select>        
+                                  </div>
+                                  <button class="btn btn-warning"type="submit">Add Review</button>
+                            </form>
                         </div>
                       </div>
                     </div>

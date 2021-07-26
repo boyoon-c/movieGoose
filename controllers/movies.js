@@ -9,13 +9,28 @@ export {
 function show(req,res){
   axios.get(`http://www.omdbapi.com/?i=${req.params.id}&plot=full&apikey=${process.env.API_KEY}`)
   .then(response =>{
-    console.log(response.data)
+    Movie.findOne({rawmId: response.data.id})
+    .populate('collectedBy')
+    .populate({
+      path:'reviews',
+      populate:{
+        path:'author'
+      }
+    })
+    .then(movie =>{
     res.render("movies/show", {
       title: `${response.data.Title} Details`,
-      apiResult: response.data
+      apiResult: response.data,
+      movie
+      })
     })
   })
+  .catch(err =>{
+    console.log(err)
+    res.redirect('/')
+  })
 }
+
 
 function search(req, res) {
     axios.get(`http://www.omdbapi.com/?s=${req.body.search}&apikey=${process.env.API_KEY}`)

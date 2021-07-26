@@ -16,8 +16,7 @@ const movieSchema = new Schema({
   awards: String,
   rating: Number,
   collectedBy: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-  // To be filled in later
-  // reviews: [reference GameReview],
+  reviews: [{type: Schema.Types.ObjectId, ref: "GameReview"}],
 },{
   timestamps: true,
 });
