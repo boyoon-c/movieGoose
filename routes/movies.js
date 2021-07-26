@@ -13,3 +13,4 @@ function isLoggedIn(req, res, next) {
 }
 
 router.post('/search', isLoggedIn, moviesCtrl.search)
+router.get('/:id', moviesCtrl.show)
