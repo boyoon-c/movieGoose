@@ -6,7 +6,7 @@
         <h2 class="fw-6 text-white pt-4 text-center">
             <%= apiResult.Title %> 
         </h2>
-        <div class = "container bg-dark">
+        <div class = "container bg-dark align-middle">
             <div class="row">
                 <div class="col">
                 <img 
@@ -14,11 +14,57 @@
                 height = "500"
                 src="<%= apiResult.Poster %>" 
                 alt="<%= apiResult.Title %>'s background image" >
+                <p class="fs-5"> Released: <%= apiResult.Year %> </p>
+                <p class="fs-5"> Cast: <%= apiResult.Actors %> </p>
+                <p class="fs-5"> Genere: <%= apiResult.Genre %> </p>
+                <p class="fs-5"> Rated: <%= apiResult.Rated %> </p>
                 </div>
-            
-                <div class="text-white col">
-                    <p class="fs-4">Released: <%= apiResult.Year %> </p>
-                    <p class="fs-4">Summary: <%= apiResult.Plot %> </p>          
+
+
+                <div class="h-100 text-white col bg-secondary">
+                <div class="row accordion accordion-flush mb-4 mt-4" id="accordionFlushExample">
+                    <div class="accordion-item bg-secondary">
+                      <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="fs-4 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          Plot
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body fs-5"><%= apiResult.Plot %></div>
+                      </div>
+                    </div>
+                    <div class="accordion-item bg-secondary">
+                      <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="fs-4 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          Rating
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body fs-5">
+                            <% apiResult.Ratings.forEach(item =>  { %>
+                                <p><%=item.Source%>: <%=item.Value%></p>  
+                            <% }) %> 
+                      </div>
+                    </div>
+                    <div class="accordion-item bg-secondary">
+                      <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="fs-4 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                          Reviews
+                        </button>
+                      </h2>
+                      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body fs-5">
+                            <%# This is where all the reviews are going to be stacked  %> 
+                            Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+
+
                 </div>
             </div>   
         </div>
