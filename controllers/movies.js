@@ -11,7 +11,7 @@ function search(req, res) {
       console.log(response.data.Search)
       //res.redirect("/")
       res.render("movies/new", {
-        title: "Search Results",
+        title: `Search Results for ${req.body.search}`,
         results: response.data.Search,
         user: req.user ? req.user : null
       })
