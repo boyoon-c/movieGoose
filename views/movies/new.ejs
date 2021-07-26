@@ -9,7 +9,7 @@
                     <% results.forEach(movie => { %>
                         <div class="col">
                             <div class="card bg-dark shadow-sm mt-3">
-                                <% if (movie.Poster) { %>
+                                <% if (movie.Poster!=="N/A") { %>
                                     <img
                                     class="card-img-top"
                                     src="<%= movie.Poster %>"
@@ -17,7 +17,15 @@
                                     width="100%"
                                     height="200"
                                     />
-                                <% } %>
+                                <% } else if (movie.Poster==="N/A") { %>
+                                    <img 
+                                    class="card-img-top"
+                                    src = "/images/icons/movie-850.png"
+                                    alt = "A placeholder avatar"
+                                    width = 100%
+                                    height = "200"
+                                    />
+                                <% } %> 
                                 <div class="card-body">
                                     <p class="card-title fs-5 text-light"><%= movie.Title %></p>
                                     <p class="card-text fs-5 text-light">Released: <%= movie.Year %></p>
