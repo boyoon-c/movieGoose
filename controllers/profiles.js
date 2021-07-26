@@ -11,7 +11,7 @@ function show(req,res){
     .then(profile =>{
         Profile.findById(req.user.profile)
         .then(userProfile =>{
-            res.render("profile/show", {
+            res.render('profiles/show', {
                 title: `${profile.name}'s profile`,
                 profile,
                 userProfile
