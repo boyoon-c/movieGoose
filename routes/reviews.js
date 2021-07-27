@@ -13,3 +13,5 @@ function isLoggedIn(req, res, next) {
 }
 
 router.post('/:id', isLoggedIn, reviewsCtrl.create)
+router.put('/:id', isLoggedIn, reviewsCtrl.update)
+router.delete('/:id', isLoggedIn, reviewsCtrl.delete)

@@ -63,7 +63,7 @@ function show(req,res){
     //   }
     // })
     .then(movie =>{
-      console.log(movie)
+      //console.log(movie)
       res.render("movies/show", {
       title: `${response.data.Title} Details`,
       apiResult: response.data,
