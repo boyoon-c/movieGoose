@@ -3,8 +3,59 @@ import axios from 'axios'
 
 export {
     search,
-    show
+    show,
+    addToLikes,
+    addToDislikes
 }
+
+function addToLikes(req,res){
+  req.body.collectedBy=req.user.profile._id
+  req.body.likes=req.user.profile._id
+  Movie.findOne({rawmId: req.params.id})
+  .then((movie)=>{
+    if (movie){
+      movie.collectedBy.push(req.user.profile._id)
+      movie.save()
+      .then(()=>{
+        res.redirect(`/movies/${req.params.id}`)
+      }) 
+    } else {
+      Movie.create(req.body)
+      .then(()=>{
+        res.redirect(`/movies/${req.params.id}`)
+      })
+    }
+  })
+  .catch(err =>{
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function addToDislikes(req,res){
+  req.body.collectedBy=req.user.profile._id
+  req.body.dislikes=req.user.profile._id
+  Movie.findOne({rawmId: req.params.id})
+  .then((movie)=>{
+    if (movie){
+      movie.collectedBy.push(req.user.profile._id)
+      movie.save()
+      .then(()=>{
+        res.redirect(`/movies/${req.params.id}`)
+      }) 
+    } else {
+      Movie.create(req.body)
+      .then(()=>{
+        res.redirect(`/movies/${req.params.id}`)
+      })
+    }
+  })
+  .catch(err =>{
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 
 function show(req,res){
   axios.get(`http://www.omdbapi.com/?i=${req.params.id}&plot=full&apikey=${process.env.API_KEY}`)
@@ -18,6 +69,7 @@ function show(req,res){
       }
     })
     .then(movie =>{
+      console.log(movie)
     res.render("movies/show", {
       title: `${response.data.Title} Details`,
       apiResult: response.data,

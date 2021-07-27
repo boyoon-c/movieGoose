@@ -34,7 +34,19 @@
                                     <p class="card-text fs-5 text-light">Released: <%= movie.Year %></p>
                                     </a>
                                     <%# This is where our game show UI will go %> 
-                                    <!-- <a href="/movies/<%= movie.imdbID %>" class="btn btn-primary">Details</a> -->
+                                    <!-- <a href="/movies/<%#= movie.imdbID %>" class="btn btn-primary">Details</a> -->
+                                    <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST">
+                                        <input type="text" name="title" hidden value="<%= movie.Title%>">
+                                        <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
+                                        <input type="text" name="image" hidden value="<%= movie.Poster %> ">
+                                        <button class="btn btn-secondary">Like 👍</button>
+                                    </form>
+                                    <form action="/movies/<%=movie.imdbID%>/addToDislikes" method="POST">
+                                        <input type="text" name="title" hidden value="<%= movie.Title%>">
+                                        <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
+                                        <input type="text" name="image" hidden value="<%= movie.Poster %> ">
+                                        <button class="btn btn-secondary">Meh 👎</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
