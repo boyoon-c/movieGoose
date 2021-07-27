@@ -57,6 +57,9 @@
                       <div id="flush-collapseThree" class="accordion-collapse show" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body fs-5">
                             <%# This is where all the reviews are going to be stacked  %> 
+                            <% movie?.reviews.forEach(review =>{ %>
+                                <p><%= review.author %>: <%= review.content %> </p>
+                            <% }) %>
                         </div>
                       </div>
                     </div>
@@ -113,7 +116,6 @@
                           </div>
                           <button class="btn btn-warning"type="submit">Add Review</button>
                     </form>
-
         </div>        
     </div>
     </section>
