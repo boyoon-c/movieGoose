@@ -2,7 +2,8 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 export {
-	Movie
+	Movie,
+  MovieReview
 }
 const movieReviewSchema = new Schema({
   rating: {type: Number, min: 1, max: 10},
@@ -36,3 +37,4 @@ const movieSchema = new Schema({
 });
 
 const Movie = mongoose.model("Movie", movieSchema);
+const MovieReview=mongoose.model("MovieReview", movieReviewSchema)
