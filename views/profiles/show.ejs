@@ -70,7 +70,7 @@
     <%# This is where we'll add a button to 'friend/unfriend' a user %> 
     
   </section>
-  <section class="bg-light pt-3">
+  <section class="pt-3">
     <div class="container">
       <h2 class="mb-3"><%= profile.name %>'s friends</h2>
       <div
@@ -78,9 +78,47 @@
       >
       <%# This is where we'll display our friends %> 
       </div>
-      <h2 class="mb-3"><%= profile.name %>'s games</h2>
+      <h2 class="mb-3"><%= profile.name %>'s movies</h2>
       <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-1">
         <%# This is where we'll loop over our games! %> 
+        <% movies.forEach(movie => { %>
+          <div class="col">
+            <div class="card bg-dark shadow-sm mb-3">
+              <% if (movie.image) { %>
+                <img
+                  class="card-img-top"
+                  src="<%= movie.image %>"
+                  alt="<%= movie.title %>'s image"
+                  width="100%"
+                />
+              <% } else {%>
+                <img
+                  class="card-img-top"
+                  src="/images/icons/user.png"
+                  alt="A placeholder avatar"
+                  width="100%"
+                />
+              <% } %>
+              <div class="card-body">
+                <p class="card-title fs-4 text-light"><%= movie.title %></p>
+                <a 
+                  href="/movies/<%= movie.rawmId %>" 
+                  class="btn btn-primary"
+                >
+                  Details
+                </a>
+                <form action="/profiles/<%=profile._id%>?_method=DELETE" method="POST">
+                  <input type="text" name="title" hidden value="<%= movie.rawmId%>">
+                  <button class="btn btn-danger">
+                    Remove from Likes
+                  </button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+
+
       </div>
     </div>
   </section>

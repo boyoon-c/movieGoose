@@ -3,18 +3,38 @@ import { Movie } from '../models/movie.js'
 
 export {
     index,
-    show
+    show,
+    deleteLikes as delete
+}
+
+function deleteLikes(req, res){
+    Movie.findOne({rawmId: req.body.title})
+    .then(movie=>{
+        movie.collectedBy.remove({_id: req.params.id})
+        movie.save()
+        .then(()=>{
+            res.redirect(`/profiles/${req.params.id}`)
+        })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    }) 
 }
 
 function show(req,res){
     Profile.findById(req.params.id)
     .then(profile =>{
-        Profile.findById(req.user.profile)
-        .then(userProfile =>{
-            res.render('profiles/show', {
-                title: `${profile.name}'s profile`,
-                profile,
-                userProfile
+        Movie.find({collectedBy: profile._id })
+        .then((movies)=>{
+            Profile.findById(req.user.profile)        
+            .then(userProfile =>{
+                res.render('profiles/show', {
+                    title: `${profile.name}'s profile`,
+                    profile,
+                    userProfile,
+                    movies
+                })
             })
         })
     })
