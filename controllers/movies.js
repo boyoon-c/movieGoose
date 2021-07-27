@@ -5,24 +5,24 @@ export {
     search,
     show,
     addToLikes,
-    addToDislikes
+    removeFromLikes
 }
 
 function addToLikes(req,res){
   req.body.collectedBy=req.user.profile._id
-  req.body.likes=req.user.profile._id
+  //req.body.likes=req.user.profile._id
   Movie.findOne({rawmId: req.params.id})
   .then((movie)=>{
     if (movie){
       movie.collectedBy.push(req.user.profile._id)
       movie.save()
       .then(()=>{
-        res.redirect(`/movies/${req.params.id}`)
+        res.redirect(`/profiles/${req.user.profile._id}`)
       }) 
     } else {
       Movie.create(req.body)
       .then(()=>{
-        res.redirect(`/movies/${req.params.id}`)
+        res.redirect(`/profiles/${req.user.profile._id}`)
       })
     }
   })
@@ -32,25 +32,17 @@ function addToLikes(req,res){
   })
 }
 
-function addToDislikes(req,res){
-  req.body.collectedBy=req.user.profile._id
-  req.body.dislikes=req.user.profile._id
-  Movie.findOne({rawmId: req.params.id})
-  .then((movie)=>{
-    if (movie){
-      movie.collectedBy.push(req.user.profile._id)
-      movie.save()
-      .then(()=>{
-        res.redirect(`/movies/${req.params.id}`)
-      }) 
-    } else {
-      Movie.create(req.body)
-      .then(()=>{
-        res.redirect(`/movies/${req.params.id}`)
-      })
-    }
+function removeFromLikes(req,res){
+  Movie.findOne({ rawmId: req.params.id })
+  .then(movie => {
+    // Remove the user's profile id from collectedBy
+    movie.collectedBy.remove({_id: req.user.profile._id})
+    movie.save()
+    .then(() => {
+      res.redirect(`/profiles/${req.user.profile._id}`)
+    })
   })
-  .catch(err =>{
+  .catch(err => {
     console.log(err)
     res.redirect('/')
   })
@@ -60,17 +52,17 @@ function addToDislikes(req,res){
 function show(req,res){
   axios.get(`http://www.omdbapi.com/?i=${req.params.id}&plot=full&apikey=${process.env.API_KEY}`)
   .then(response =>{
-    Movie.findOne({rawmId: response.data.id})
+    Movie.findOne({rawmId: response.data.imdbID})
     .populate('collectedBy')
-    .populate({
-      path:'reviews',
-      populate:{
-        path:'author'
-      }
-    })
+    // .populate({
+    //   path:'reviews',
+    //   populate:{
+    //     path:'author'
+    //   }
+    // })
     .then(movie =>{
       console.log(movie)
-    res.render("movies/show", {
+      res.render("movies/show", {
       title: `${response.data.Title} Details`,
       apiResult: response.data,
       movie

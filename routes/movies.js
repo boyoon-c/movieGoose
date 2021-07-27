@@ -15,4 +15,4 @@ function isLoggedIn(req, res, next) {
 router.post('/search', isLoggedIn, moviesCtrl.search)
 router.get('/:id', moviesCtrl.show)
 router.post('/:id/addToLikes', isLoggedIn, moviesCtrl.addToLikes)
-router.post('/:id/addToDislikes', isLoggedIn, moviesCtrl.addToDislikes)
+router.delete('/:id/addToDislikes', isLoggedIn, moviesCtrl.removeFromLikes)

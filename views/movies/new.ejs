@@ -35,17 +35,17 @@
                                     </a>
                                     <%# This is where our game show UI will go %> 
                                     <!-- <a href="/movies/<%#= movie.imdbID %>" class="btn btn-primary">Details</a> -->
-                                    <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST">
+                                    <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST" class="mt-4 mb-4">
                                         <input type="text" name="title" hidden value="<%= movie.Title%>">
                                         <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
                                         <input type="text" name="image" hidden value="<%= movie.Poster %> ">
-                                        <button class="btn btn-secondary">Like 👍</button>
+                                        <button class="btn btn-secondary">Add to Likes 👍</button>
                                     </form>
-                                    <form action="/movies/<%=movie.imdbID%>/addToDislikes" method="POST">
+                                    <form action="/movies/<%=movie.imdbID%>/removeFromLikes?_method=DELETE" method="POST" >
                                         <input type="text" name="title" hidden value="<%= movie.Title%>">
                                         <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
                                         <input type="text" name="image" hidden value="<%= movie.Poster %> ">
-                                        <button class="btn btn-secondary">Meh 👎</button>
+                                        <button class="btn btn-secondary">Remove from Likes 👎</button>
                                     </form>
                                 </div>
                             </div>
