@@ -14,7 +14,9 @@ function addToLikes(req,res){
   Movie.findOne({rawmId: req.params.id})
   .then((movie)=>{
     if (movie){
+      if (!movie.collectedBy.includes(req.user.profile._id)){
       movie.collectedBy.push(req.user.profile._id)
+      }
       movie.save()
       .then(()=>{
         res.redirect(`/profiles/${req.user.profile._id}`)
