@@ -61,10 +61,10 @@
                                 <table>
                                 <tbody>
                                 <tr>
-                                    <%= review.author %>: <%= review.content%> (<%= review.rating %>/5) 
-                                    <% if (review.authorId==user.profile._id){ %>
+                                    <%= review.authorId.name %>: <%= review.content%> (<%= review.rating %>/5) 
+                                    <% if (review.authorId._id==user.profile._id){ %>
                                         <td>
-                                        <form action="/reviews/<%=movie._id %>?_method=DELETE" method="DELETE">
+                                        <form action="/reviews/<%=review._id %>?_method=DELETE" method="DELETE">
                                         <button class="btn btn-light">Delete</button>
                                         </form>
                                         </td>

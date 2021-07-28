@@ -1,5 +1,6 @@
-import { Movie, MovieReview } from '../models/movie.js'
-//import { MovieReview } from '../models/movieReview.js'
+//import { Movie, MovieReview } from '../models/movie.js'
+import { Movie } from '../models/movie.js'
+import { MovieReview } from '../models/movieReview.js'
 
 export{ 
     create,
@@ -24,7 +25,7 @@ function update(req,res){
 }
 
 function deleteReview(req,res){
-
+    console.log("req.params", req.params)
 }
 
 // function create(req,res){

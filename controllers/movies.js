@@ -1,4 +1,5 @@
 import { Movie } from '../models/movie.js'
+import { MovieReview } from '../models/movieReview.js'
 import axios from 'axios'
 
 export {
@@ -56,14 +57,14 @@ function show(req,res){
   .then(response =>{
     Movie.findOne({rawmId: response.data.imdbID})
     .populate('collectedBy')
-    // .populate({
-    //   path:'reviews',
-    //   populate:{
-    //     path:'author'
-    //   }
-    // })
+    .populate({
+      path:'reviews',
+       populate:{
+         path:'authorId'
+       }
+    })
     .then(movie =>{
-      //console.log(movie)
+      console.log(movie)
       res.render("movies/show", {
       title: `${response.data.Title} Details`,
       apiResult: response.data,
