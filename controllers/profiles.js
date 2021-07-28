@@ -4,8 +4,34 @@ import { Movie } from '../models/movie.js'
 export {
     index,
     show,
-    deleteLikes as delete
+    deleteLikes as delete,
+    edit,
+    update
 }
+function update(req, res) {
+    Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then((profile) => {
+      res.redirect(`/profiles/${profile._id}`)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.redirect('/')
+    })
+  }
+
+function edit(req, res) {
+    Profile.findById(req.params.id)
+    .then(profile => {
+      res.render('profiles/edit', {
+        title: `Editing ${profile.name}'s profile`,
+        profile
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  }
 
 function deleteLikes(req, res){
     Movie.findOne({rawmId: req.body.title})
