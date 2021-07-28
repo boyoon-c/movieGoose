@@ -25,7 +25,11 @@ function update(req,res){
 }
 
 function deleteReview(req,res){
-    console.log("req.params", req.params)
+    //console.log("req.params", req.params)
+    MovieReview.findByIdAndDelete(req.params.id)
+    .then(()=>{
+        res.redirect('/')
+    })
 }
 
 // function create(req,res){

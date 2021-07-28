@@ -9,6 +9,7 @@
                     <% results.forEach(movie => { %>
                         <div class="col">
                             <div class="card bg-dark shadow-sm mt-3">
+                                <h1><%= movie %> </h1>
                                 <% if (movie.Poster!=="N/A") { %>
                                     <a href="/movies/<%= movie.imdbID %> "><img
                                     class="card-img-top"
@@ -35,7 +36,8 @@
                                     </a>
                                     <%# This is where our game show UI will go %> 
                                     <!-- <a href="/movies/<%#= movie.imdbID %>" class="btn btn-primary">Details</a> -->
-                                    <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST" class="mt-4 mb-4">
+                                    <%# If user has not yet selected this movie, then have add/remove button appear on the screen%>
+                                        <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST" class="mt-4 mb-4">
                                         <input type="text" name="title" hidden value="<%= movie.Title%>">
                                         <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
                                         <input type="text" name="image" hidden value="<%= movie.Poster %> ">

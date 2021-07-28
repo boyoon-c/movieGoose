@@ -62,9 +62,9 @@
                                 <tbody>
                                 <tr>
                                     <%= review.authorId.name %>: <%= review.content%> (<%= review.rating %>/5) 
-                                    <% if (review.authorId._id==user.profile._id){ %>
+                                    <% if (review.authorId._id.equals(user.profile._id)){ %>
                                         <td>
-                                        <form action="/reviews/<%=review._id %>?_method=DELETE" method="DELETE">
+                                        <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-light">Delete</button>
                                         </form>
                                         </td>
