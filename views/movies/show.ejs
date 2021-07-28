@@ -61,22 +61,19 @@
                                 <table>
                                 <tbody>
                                 <tr>
-                                    <%= review.author %>: <%= review.content%>
-                                    <td>
-                                    <form action="/reviews/<%= movie._id %>?_method=PUT" method="POST">
-                                    <input type="text" name="content">                                    <button class="btn btn-light">Edit</button>
-
-                                    </form>
-                                    </td>
-                                    <td>
-                                    <form action="/reviews/<%=movie._id %>?_method=DELETE" method="DELETE">
-                                    <button class="btn btn-light">Delete</button>
-                                    </form>
-                                    </td>
+                                    <%= review.author %>: <%= review.content%> (<%= review.rating %>/5) 
+                                    <% if (review.authorId==user.profile._id){ %>
+                                        <td>
+                                        <form action="/reviews/<%=movie._id %>?_method=DELETE" method="DELETE">
+                                        <button class="btn btn-light">Delete</button>
+                                        </form>
+                                        </td>
+                                        <% } %>  
+                                    <% }) %>
                                 </tr>
                                 </tbody>
                             </table>
-                            <% }) %>
+
                         </div>
                       </div>
                     </div>
@@ -124,11 +121,7 @@
                               <option value="3">3</option>
                               <option value="4">4</option>
                               <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
+
                             </select>        
                           </div>
                           <button class="btn btn-warning"type="submit">Add Review</button>

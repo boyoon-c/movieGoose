@@ -10,7 +10,8 @@ const movieReviewSchema = new Schema({
   like: {type: Boolean},
   content: String,
   //movie: {type: Schema.Types.ObjectId, ref: "Movie"},
-  authorId: {type: Schema.Types.ObjectId, ref: "Profile"},
+  //authorId: {type: Schema.Types.ObjectId, ref: "Profile"},
+  authorId: String,
   author: String,
   //reply: {type: Schema.Types.ObjectId, ref: "Profile"}
 },{

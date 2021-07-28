@@ -36,6 +36,7 @@ function create(req,res){
     //console.log("req.param.id", req.params.id)
     //console.log("req.user.profile", req.user)
     req.body.author=req.user.profile.name
+    req.body.authorId=req.user.profile._id
     //console.log("req.body", req.body)
     //req.body.movie = req.params._id
     MovieReview.create(req.body)
