@@ -2,7 +2,9 @@
 
 ## Description
 
-**movie goose**, a movie-search web application, provides two main features: 1\) it provides basic information about movies, such as their respective genre, casts, directors, and plot, as well as its unique collection of the reviews created by its users, 2\) users could add their favorite movies to their "likes list" so that other users that are using the application could check them out. 
+**movie goose**, a movie-search web application, provides two main features: 
+- 1) it provides basic information about movies, such as their respective genre, casts, directors, and plot, as well as its unique collection of the reviews created by its users, 
+- 2\) users could add their favorite movies to their "likes list" so that other users that are using the application could check them out. 
 
 
 
