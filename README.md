@@ -22,10 +22,12 @@
 
 
 ## Technologies Used: List of the technologies used
-- Javascript
-- node.js
-- express
-- mongodb
+- HTML, CSS, Javascript
+- Node.js
+- Express, axios, ejs, dotenv, method-override
+- MongoDb, mongoose
+- Bootstrap
+- Google OAuth and passport 
 
 
 ## Next Steps: Planned future enhancements (icebox items).
@@ -37,4 +39,9 @@
 
 ## Resources
 ### API
+
+[OMDb API](https://www.omdbapi.com/)
+
 ### Images
+- Background image:
+- Bob avatar image:
