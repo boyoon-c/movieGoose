@@ -67,29 +67,23 @@
         Logout
       </a>
     <% } %>
-    <%# This is where we'll add a button to 'friend/unfriend' a user %> 
     
   </section>
   <section class="pt-3">
     <div class="container">
-      <!-- <h2 class="mb-3"><%#= profile.name %>'s friends</h2> -->
-      <div
-        class="row col px-1"
-      >
-      <%# This is where we'll display our friends %> 
-      </div>
       <h2 class="mb-3"><%= profile.name %>'s movies</h2>
-      <div class="row px-1">
+      <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-1">
         <%# This is where we'll loop over our games! %> 
         <% movies.forEach(movie => { %>
           <div class="col">
-            <div class="card bg-dark shadow-sm mb-3">
+            <div class="card bg-dark shadow-sm mb-3" style="width:20em ;height:40em">
               <% if (movie.image) { %>
                 <img
                   class="card-img-top"
                   src="<%= movie.image %>"
                   alt="<%= movie.title %>'s image"
                   width="100%"
+                  height="100%"
                 />
               <% } else {%>
                 <img
@@ -97,6 +91,7 @@
                   src="/images/icons/user.png"
                   alt="A placeholder avatar"
                   width="100%"
+                  height="100%"
                 />
               <% } %>
               <div class="card-body">
@@ -107,7 +102,7 @@
                 >
                   Details
                 </a>
-                <form action="/profiles/<%=profile._id%>?_method=DELETE" method="POST">
+                <form action="/profiles/<%=profile._id%>?_method=DELETE" method="POST" style="display: inline; text-align: center">
                   <input type="text" name="title" hidden value="<%= movie.rawmId%>">
                   <button class="btn btn-danger">
                     Remove from Likes

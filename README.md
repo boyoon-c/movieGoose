@@ -24,7 +24,10 @@
 
 ## Technologies Used: List of the technologies used
 - Javascript
-- 
+- node.js
+- express
+- mongodb
+
 
 ## Next Steps: Planned future enhancements (icebox items).
 - [ ] Make all the users' collections appear on a page
@@ -32,3 +35,7 @@
 - [ ] Enable search by categories other than movie title
 - [ ] blah
 - [ ] blah
+
+## Resources
+### API
+### Images
