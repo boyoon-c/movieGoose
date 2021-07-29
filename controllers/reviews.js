@@ -14,14 +14,25 @@ function update(req,res){
     // find the prifle id
     // find the movie id
     // then remove the review written by that profile id under that movie id
-    MovieReview.findByIdAndUpdate(req.params.id, req.body.content, {new:true})
-    .then((movie)=>{
-        res.redirect(`/movies/${movie.imdbID}`)
+    MovieReview.findOne({_id:req.params.id})
+    .then((review)=>{
+        review.content=req.body.content
+        console.log(review)
+        review.save()
+        .then(()=>{
+            res.redirect(`/movies/${review.movie}`)
+        })
     })
-    .catch((err)=>{
-        console.log(err)
-        res.redirect("/")
-    })
+
+    // MovieReview.findByIdAndUpdate(req.params.id, req.body.content, {new:true})
+    // .then(()=>{
+    //     res.redirect('/')
+    //     res.redirect(`/movies/${movie.imdbID}`)
+    //})
+    // .catch((err)=>{
+    //     console.log(err)
+    //     res.redirect("/")
+    // })
 }
 
 function deleteReview(req,res){

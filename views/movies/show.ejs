@@ -64,8 +64,9 @@
                                     <%= review.authorId.name %>: <%= review.content%> (<%= review.rating %>/5) 
                                     <% if (review.authorId._id.equals(user.profile._id)){ %>
                                       <td>
+                                        <h1><%= review._id %> </h1>
                                         <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
-                                          <input type="text" name="updateContent" placeholder="<%=  review.content%>">  
+                                          <input type="text" name="content" value="<%=  review.content%>">  
                                         <button class="btn btn-light">Edit</button>
                                         </form>
                                         </td>
