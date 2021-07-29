@@ -57,24 +57,24 @@
                       <div id="flush-collapseThree" class="accordion-collapse show" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body fs-5">
                             <%# This is where all the reviews are going to be stacked  %> 
-                            <% movie?.reviews.forEach(review =>{ %>
-                                <table>
-                                  <thead>
-                                    <tr>
-                                      <th>Rating</th>
-                                      <th>Comments</th>
-                                      <th></th>
-                                    </tr>
-                                  </thead>
-                                <tbody>
+                            <table>
+                              <thead>
+                                <tr>
+                                  <th style="text-align:center">Rating</th>
+                                  <th style="text-align:center">Comments</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                  <% movie?.reviews.forEach(review =>{ %>
                                 <tr>
                                   <td>
                                     (<%= review.rating %>/5)
                                   </td>
-                                  <td>
+                                  <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;">
                                     <%= review.authorId.name %>: <%= review.content%>
                                   </td>
-                                    <td>
+                                    <td align="center">
                                   <% if (review.authorId._id.equals(user.profile._id)){ %>
                                         <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                           <input type="text" hidden value="review.movie">
@@ -84,9 +84,14 @@
                                 </tr>
                                 <tr>
                                     <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
-                                    <td><input type="text" name="rating" value="<%= review.rating %> "> 
+                                    <td><select name="rating" value="<%= review.rating %> "> 
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
                                     </td>
-                                    <td>
+                                    <td style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
                                       <input type="text" name="content" value="<%=  review.content%>"> 
                                     </td>
                                     <td>

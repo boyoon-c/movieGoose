@@ -74,12 +74,12 @@
     <div class="container">
       <!-- <h2 class="mb-3"><%#= profile.name %>'s friends</h2> -->
       <div
-        class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g1 px-1"
+        class="row col px-1"
       >
       <%# This is where we'll display our friends %> 
       </div>
       <h2 class="mb-3"><%= profile.name %>'s movies</h2>
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g5 px-1">
+      <div class="row px-1">
         <%# This is where we'll loop over our games! %> 
         <% movies.forEach(movie => { %>
           <div class="col">
@@ -116,11 +116,10 @@
               </div>
             </div>
           </div>
-        <% }) %>
-
-
+        <% }) %>        
       </div>
     </div>
+    <h2 class="mb-3"><%= profile.name %>'s reviews</h2>
   </section>
 </main>
 
