@@ -9,12 +9,12 @@ export{
  }
 
 function update(req,res){
-    console.log("reqdotbody",req.body)
+    console.log("reqdotbody", req.body)
     console.log("reqdotparam", req.params)
     // find the prifle id
     // find the movie id
     // then remove the review written by that profile id under that movie id
-    Movie.findByIdAndUpdate(req.params.id, req.body.content, {new:true})
+    MovieReview.findByIdAndUpdate(req.params.id, req.body.content, {new:true})
     .then((movie)=>{
         res.redirect(`/movies/${movie.imdbID}`)
     })
@@ -25,16 +25,17 @@ function update(req,res){
 }
 
 function deleteReview(req,res){
-    //console.log("req.params", req.params)
+    //console.log("reqdotbody", req.body)
+    //console.log("reqdotparam", req.params)
+    //MovieReview.findByIdAndDelete(req.params.id)
+    
     MovieReview.findByIdAndDelete(req.params.id)
-    .then(()=>{
-        res.redirect('/')
+    .then((review)=>{
+        //console.log("this is the review to be deleted",review)
+        res.redirect(`/movies/${review.movie}`)
     })
 }
 
-// function create(req,res){
-
-// }
 
 function create(req,res){
     //console.log("req.body", req.body)
@@ -42,11 +43,12 @@ function create(req,res){
     //console.log("req.user.profile", req.user)
     req.body.author=req.user.profile.name
     req.body.authorId=req.user.profile._id
-    //console.log("req.body", req.body)
-    //req.body.movie = req.params._id
+    req.body.movie = req.params.id
+    console.log("req.body", req.body)
     MovieReview.create(req.body)
     .then((review)=>{
-        Movie.findById(req.params.id)
+        //Movie.findById(req.params.id)
+        Movie.findOne({rawmId: req.params.id })
         .then((movie) =>{
             //console.log(review)
             movie.reviews.push(review)

@@ -63,8 +63,15 @@
                                 <tr>
                                     <%= review.authorId.name %>: <%= review.content%> (<%= review.rating %>/5) 
                                     <% if (review.authorId._id.equals(user.profile._id)){ %>
+                                      <td>
+                                        <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
+                                          <input type="text" name="updateContent" placeholder="<%=  review.content%>">  
+                                        <button class="btn btn-light">Edit</button>
+                                        </form>
+                                        </td>
                                         <td>
                                         <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                          <input type="text" hidden value="review.movie">
                                         <button class="btn btn-light">Delete</button>
                                         </form>
                                         </td>
@@ -97,8 +104,9 @@
                     </a>
                   <% }) %>
 
-                  <form action="/reviews/<%=movie._id%>" method="POST">
-                    <!-- <form action="/reviews/<%#=movie._id%>" method="POST"></form> -->
+                  <!-- <form action="/reviews/<%#=movie._id%>" method="POST"> -->
+                    <h1><%= movie.rawmId %></h1> 
+                    <form action="/reviews/<%=movie.rawmId%>" method="POST">
                         <div class="mb-3 mt-4">
                             <label 
                               for="exampleFormControlTextarea1" 

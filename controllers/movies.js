@@ -17,7 +17,7 @@ function addToLikes(req,res){
     if (movie){
       if (!movie.collectedBy.includes(req.user.profile._id)){
       movie.collectedBy.push(req.user.profile._id)
-      }
+      } 
       movie.save()
       .then(()=>{
         res.redirect(`/profiles/${req.user.profile._id}`)
