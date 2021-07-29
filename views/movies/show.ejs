@@ -59,23 +59,44 @@
                             <%# This is where all the reviews are going to be stacked  %> 
                             <% movie?.reviews.forEach(review =>{ %>
                                 <table>
+                                  <thead>
+                                    <tr>
+                                      <th>Rating</th>
+                                      <th>Comments</th>
+                                      <th></th>
+                                    </tr>
+                                  </thead>
                                 <tbody>
                                 <tr>
-                                    <%= review.authorId.name %>: <%= review.content%> (<%= review.rating %>/5) 
-                                    <% if (review.authorId._id.equals(user.profile._id)){ %>
-                                      <td>
-                                        <h1><%= review._id %> </h1>
-                                        <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
-                                          <input type="text" name="content" value="<%=  review.content%>">  
-                                        <button class="btn btn-light">Edit</button>
-                                        </form>
-                                        </td>
-                                        <td>
+                                  <td>
+                                    (<%= review.rating %>/5)
+                                  </td>
+                                  <td>
+                                    <%= review.authorId.name %>: <%= review.content%>
+                                  </td>
+                                    <td>
+                                  <% if (review.authorId._id.equals(user.profile._id)){ %>
                                         <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                           <input type="text" hidden value="review.movie">
                                         <button class="btn btn-light">Delete</button>
                                         </form>
-                                        </td>
+                                      </td>
+                                </tr>
+                                <tr>
+                                    <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
+                                    <td><input type="text" name="rating" value="<%= review.rating %> "> 
+                                    </td>
+                                    <td>
+                                      <input type="text" name="content" value="<%=  review.content%>"> 
+                                    </td>
+                                    <td>
+                                    <button class="btn btn-light">Update</button>
+                                    </td>
+                                    </form>
+                                  </tr>
+                                  </td>  
+ 
+
                                         <% } %>  
                                     <% }) %>
                                 </tr>
@@ -106,7 +127,6 @@
                   <% }) %>
 
                   <!-- <form action="/reviews/<%#=movie._id%>" method="POST"> -->
-                    <h1><%= movie.rawmId %></h1> 
                     <form action="/reviews/<%=movie.rawmId%>" method="POST">
                         <div class="mb-3 mt-4">
                             <label 

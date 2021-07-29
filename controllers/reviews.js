@@ -17,6 +17,7 @@ function update(req,res){
     MovieReview.findOne({_id:req.params.id})
     .then((review)=>{
         review.content=req.body.content
+        review.rating=req.body.rating
         console.log(review)
         review.save()
         .then(()=>{
