@@ -9,6 +9,7 @@ const movieSchema = new Schema({
   title: String,
   rawmId: String,
   image: String,
+  // This is for later exercise
   //likes: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
   //dislikes:[{ type: Schema.Types.ObjectId, ref: "Profile" }],
   collectedBy: [{ type: Schema.Types.ObjectId, ref: "Profile" }],

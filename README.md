@@ -43,6 +43,7 @@
 - [X] Allow users to edit their comments on the movie-details page
 - [ ] Make all the users' collections appear on a page
 - [ ] Enable search by categories other than movie title
+- [ ] Further separate user movie collection by likes and dislikes
 - [ ] Display distribution of the ratings of a movie rated by users
 
 ## Resources
