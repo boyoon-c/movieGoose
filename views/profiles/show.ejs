@@ -70,9 +70,12 @@
     
   </section>
   <section class="pt-3">
-    <div class="container-fluid full-width-div" style="text-align:center">
+    <div class="container-fluid full-width-div mb-3" style="text-align:center">
       <h2 class="mb-3 bg-dark"><%= profile.name %>'s movies</h2>
       <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-5">
+        <% if (movies?.length==0){ %>
+          <h2>Movies not yet added.</h2>
+        <% } %>  
         <% movies.forEach(movie => { %>
           <div class="col">
             <div class="card bg-dark shadow-sm mb-3" style="width:20em ;height:40em">
@@ -112,11 +115,14 @@
           </div>
         <% }) %>        
       </div>
-      <h2 class="mb-3 bg-dark"><%= profile.name %>'s reviews</h2>
-
+      
       <%# My favorite ejs  %> 
+      <h2 class="mb-3 mt-3 bg-dark"><%= profile.name %>'s reviews</h2>
+      <% if (reviews?.length==0){ %>
+        <h2 class="mb-5">Reviews not yet added.</h2>
+      <% } %>  
       <div class="container-fluid full-width-div" style="text-align:center; color:black">
-        <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-5">
+        <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-5 mb-5">
           <% reviews.forEach(review=>{ %> 
             <% movies.forEach(movie =>{ %>
               <% if (movie.rawmId==review.movie){ %> 
