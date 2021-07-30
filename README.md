@@ -44,5 +44,5 @@
 [OMDb API](https://www.omdbapi.com/)
 
 ### Images
-- Background image: [An empty movie theater.(Getty Images)](https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service)
-- Bob avatar image: [Pinterest](https://i.pinimg.com/originals/75/10/a2/7510a2b625b9d40531c13d7a07156f15.jpg)
+- Background image: ["An empty movie theater.(Getty Images)"](https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service)
+- Bob avatar image: [pngwing.com](https://w7.pngwing.com/pngs/833/958/png-transparent-bob-the-minion-minions-drawing-despicable-me-bob-minion-poster-sticker-desktop-wallpaper.png)
