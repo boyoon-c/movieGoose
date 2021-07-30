@@ -7,7 +7,6 @@
 2) users could add their favorite movies to their "likes list" so that other users that are using the application could check them out. 
 
 
-
 ## Getting Started: 
 - [A link to the deployed app](https://movie-goose.herokuapp.com)
 - [A link to the Trello planning](https://trello.com/b/dnfntKkm/unit2-project)
@@ -45,5 +44,5 @@
 [OMDb API](https://www.omdbapi.com/)
 
 ### Images
-- Background image:
-- Bob avatar image:
+- Background image: [An empty movie theater.(Getty Images)](https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service)
+- Bob avatar image: [Pinterest](https://i.pinimg.com/originals/75/10/a2/7510a2b625b9d40531c13d7a07156f15.jpg)
