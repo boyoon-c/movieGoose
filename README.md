@@ -2,9 +2,9 @@
 
 ## Description
 
-**movie goose**, a movie-search web application, has two main features: 
+**movie goose**, a movie-search and movie-review web application, has two main features: 
 1) it provides basic information about movies, such as their respective genre, casts, directors, and plot, as well as its unique collection of the reviews created by its users, and
-2) users could add their favorite movies to their "likes list" so that other users that are using the application could check them out. 
+2) users could add their favorite movies to their "likes list" and add review comments so that other users also using the application could check them out. 
 
 
 ## Getting Started: 
@@ -13,13 +13,19 @@
 
 ## Screenshot(s): 
 
-### App's landing page
+### Landing page
+![](/images/landing_page.jpeg)
 
-### Search results page
+### Search-results page
+![](/images/search_results.jpeg)
 
-### Movie details page
+### Movie-details page
+![](/images/movie_details.jpeg)
 
 ### Profile page
+![](/images/profile0.jpeg)
+![](/images/profile1.jpeg)
+![](/images/profile2.jpeg)
 
 
 ## Technologies Used: List of the technologies used
@@ -32,11 +38,12 @@
 
 
 ## Next Steps: Planned future enhancements (icebox items).
+- [X] Allow users to view their comments on their profile page
+- [X] Calculate the average rating of a movie rated by users
+- [X] Allow users to edit their comments on the movie-details page
 - [ ] Make all the users' collections appear on a page
-- [ ] Allow users to view their comments on their profile page
 - [ ] Enable search by categories other than movie title
-- [ ] blah
-- [ ] blah
+- [ ] Display distribution of the ratings of a movie rated by users
 
 ## Resources
 ### API
@@ -44,5 +51,7 @@
 [OMDb API](https://www.omdbapi.com/)
 
 ### Images
-- Background image: ["An empty movie theater.(Getty Images)"](https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service)
-- Bob avatar image: [pngwing.com](https://w7.pngwing.com/pngs/833/958/png-transparent-bob-the-minion-minions-drawing-despicable-me-bob-minion-poster-sticker-desktop-wallpaper.png)
+- Background image
+  - An empty movie theater.(Getty Images): https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service 
+- Bob avatar image
+  - numpaint website: https://numpaint.com/products/bob-the-minion-paint-by-numbers/
