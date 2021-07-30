@@ -7,11 +7,11 @@
 2) users could add their favorite movies to their "likes list" and create/update/delete reviews about a movie so that other users that are also using the application could check them out. 
 
 
-## Getting Started: 
+## Getting Started
 - [A link to the deployed app](https://movie-goose.herokuapp.com)
 - [A link to the Trello planning](https://trello.com/b/dnfntKkm/unit2-project)
 
-## Screenshot(s): 
+## Screenshot(s)
 
 ### Landing page
 ![](/images/landing_page.jpeg)
@@ -40,7 +40,7 @@
 - Google OAuth and passport 
 
 
-## Next Steps: Planned future enhancements (icebox items).
+## Next Steps
 - [X] Allow users to view their comments on their profile page
 - [X] Calculate the average rating of a movie rated by users
 - [X] Allow users to edit their comments on the movie-details page

@@ -11,7 +11,6 @@ export {
 
 function addToLikes(req,res){
   req.body.collectedBy=req.user.profile._id
-  //req.body.likes=req.user.profile._id
   Movie.findOne({rawmId: req.params.id})
   .then((movie)=>{
     if (movie){
@@ -83,7 +82,6 @@ function search(req, res) {
     axios.get(`http://www.omdbapi.com/?s=${req.body.search}&apikey=${process.env.API_KEY}`)
     .then((response) => {
       console.log(response.data.Search)
-      //res.redirect("/")
       res.render("movies/new", {
         title: `Search Results for ${req.body.search}`,
         results: response.data.Search,
