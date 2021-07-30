@@ -151,8 +151,8 @@
                       <p>Rating: <%= review.rating %></p>
                     </div>
                     <div class="card-footer">
-                      <% let today=new Date() %> 
-                      <% let daysBetween=(today-review.updatedAt)/(1000 * 3600 * 24)%> 
+                      <% let today=new Date().getDate() %>
+                      <% let daysBetween=(today-review.updatedAt.getDate())%> 
                       <small class="text-muted">Last updated 
                         <% if (daysBetween.toFixed()==0){ %> 
                           today </small>
