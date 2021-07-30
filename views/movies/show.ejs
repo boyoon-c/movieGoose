@@ -57,7 +57,7 @@
                       <div id="flush-collapseThree" class="accordion-collapse show" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body fs-5">
                             <%# This is where all the reviews are going to be stacked  %> 
-                            <table>
+                            <table class="table-responsive">
                               <thead>
                                 <tr>
                                   <th style="text-align:center">Rating</th>
@@ -75,15 +75,13 @@
                                     <%= review.authorId.name %>: <%= review.content%>
                                   </td>
                                   
-                                    <td>
-                                      <div style="display: inline">
+                                    <td align="center" class="d-flex">
                                   <% if (review.authorId._id.equals(user.profile._id)){ %>
                                         <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                           <input type="text" hidden value="review.movie">
                                         <button class="btn btn-light">Delete</button>
                                         </form>
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Edit</button>
-                                      </div>
                                       </td>
                                 </tr>
                                 <tr>
