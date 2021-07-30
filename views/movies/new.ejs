@@ -2,20 +2,21 @@
 <%- include('../partials/nav') %>
 
 <p class="py-3 my-0 fs-3 text-center text-light"><%= title %></p>
+<main>
+    <section class="pt-3">
     <% if (results) {%> 
-        <main>
-            <div class="container py-5">
-                <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-3">
+            <div class="container-fluid full-width-div ">
+                <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4">
                     <% results.forEach(movie => { %>
                         <div class="col">
-                            <div class="card bg-dark shadow-sm mt-3" style="width:20em; height:40em">
+                            <div class="card bg-dark shadow-sm mb-3 mx-1 " style="width:20em ;height:40em; text-align: center">
                                 <% if (movie.Poster!=="N/A") { %>
                                     <img
                                     class="card-img-top"
                                     src="<%= movie.Poster %>"
                                     alt="<%= movie.Poster %>'s image"
                                     width="100%"
-                                    height="200"
+                                    height="60%"
                                     />
                                     
                                 <% } else if (movie.Poster==="N/A") { %>
@@ -24,7 +25,7 @@
                                     src = "/images/icons/movie-850.png"
                                     alt = "A placeholder avatar"
                                     width = 100%
-                                    height = "200"
+                                    height = "75%"
                                     />
                                     
                                 <% } %> 
@@ -33,9 +34,9 @@
                                     <p class="card-title fs-5 text-light"><%= movie.Title %></p>
                                     <p class="card-text fs-5 text-light">Released: <%= movie.Year %></p>
                                     </a>
-                                    <%# This is where our game show UI will go %> 
-                                    <!-- <a href="/movies/<%#= movie.imdbID %>" class="btn btn-primary">Details</a> -->
-                                    <%# If user has not yet selected this movie, then have add/remove button appear on the screen%>
+
+                                    <%# Icebox: If user has not yet selected this movie, then have add/remove button appear on the screen. This may require forEach method to scan through all the search results, retrieve their ids, use some method to determine whether a certain movie is contained in user's collection%>
+                                    <div style="display: inline">
                                         <form action="/movies/<%=movie.imdbID%>/addToLikes" method="POST" class="mt-4 mb-4">
                                         <input type="text" name="title" hidden value="<%= movie.Title%>">
                                         <input type="text" name="rawmId" hidden value="<%= movie.imdbID %>">
@@ -48,12 +49,14 @@
                                         <input type="text" name="image" hidden value="<%= movie.Poster %> ">
                                         <button class="btn btn-secondary">Remove from Likes 👎</button>
                                     </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     <% }) %>
                 </div>
             </div>
+        </section>
         </main>
     <% } %>     
 
