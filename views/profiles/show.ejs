@@ -94,7 +94,7 @@
                 />
               <% } %>
               <div class="card-body">
-                <p class="card-title fs-4 text-light"><%= movie.title %></p>
+                <p class="card-title fs-5 text-light"><%= movie.title %></p>
                 <a 
                   href="/movies/<%= movie.rawmId %>" 
                   class="btn btn-primary"
@@ -113,7 +113,48 @@
         <% }) %>        
       </div>
       <h2 class="mb-3 bg-dark"><%= profile.name %>'s reviews</h2>
-      <%# This is where all the reviews are going to be stacked. First, index MovieReview by profile id %> 
+      <%# This is where all the reviews are going to be stacked. First, index MovieReview by profile id %>
+      <div class="container-fluid full-width-div" style="text-align:center">
+        <div class="row justify-content-md-center row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-7 g-4 px-5">
+          <% reviews.forEach(review=>{ %> 
+            <% movies.forEach(movie =>{ %>
+              <% if (movie.rawmId==review.movie){ %> 
+                <div class="col">
+                  <div class="card bg-dark shadow-sm mb-3" style="width:20em">
+                    <% if (movie.image) { %>
+                      <img
+                        class="card-img-top"
+                        src="<%= movie.image %>"
+                        alt="<%= movie.title %>'s image"
+                        width="100%"
+                        height="75%"
+                      />
+                    <% } else {%>
+                      <img
+                        class="card-img-top"
+                        src="/images/icons/user.png"
+                        alt="A placeholder avatar"
+                        width="100%"
+                        height="100%"
+                      />
+                    <% } %>
+                    <div class="card-title fs-5"><%= movie.title %> </div>
+                    <div class="card-body"><%= review.content %> </div>
+                    <a 
+                  href="/movies/<%= movie.rawmId %>" 
+                  class="btn btn-primary"
+                >
+                  Movie Details
+                </a>
+                  </div>
+                </div>
+              <% } %> 
+            <% })  %> 
+           <% }) %> 
+        </div>
+      </div>
+      
+
     </div>
   </section>
 </main>

@@ -1,5 +1,6 @@
 import { Profile } from '../models/profile.js'
 import { Movie } from '../models/movie.js'
+import { MovieReview } from '../models/movieReview.js'
 
 export {
     index,
@@ -55,12 +56,17 @@ function show(req,res){
         .then((movies)=>{
             Profile.findById(req.user.profile)        
             .then(userProfile =>{
+              MovieReview.find({authorId: req.params.id})
+              .then(reviews =>{
+                console.log(reviews)
                 res.render('profiles/show', {
                     title: `${profile.name}'s profile`,
                     profile,
                     userProfile,
-                    movies
+                    movies,
+                    reviews
                 })
+              })
             })
         })
     })

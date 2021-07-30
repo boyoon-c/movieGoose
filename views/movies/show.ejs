@@ -2,7 +2,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-    <section class="text-secondary px-4">
+    <section class="text-secondary px-4 mb-4">
         <h2 class="fw-6 text-white pt-4 text-center">
             <%= apiResult.Title %> 
         </h2>
@@ -130,12 +130,14 @@
 
                                     <%# Average Rating calculation %> 
                                     <% let numReviews=movie?.reviews.length %> 
-                                    <h3 align="center" class=bg-dark>Average Rating: <%= (sum/numReviews).toFixed(2) %> </h1>
+
 
                                 </tr>
                                 </tbody>
                             </table>
-
+                            <% if (sum/numReviews){ %> 
+                            <h3 align="center" class="bg-dark my-3 py-3">Average Rating: <%= (sum/numReviews).toFixed(2) %> </h3>
+                            <% } %> 
                         </div>
                       </div>
                     </div>
