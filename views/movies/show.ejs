@@ -67,6 +67,8 @@
                               </thead>
                               <tbody>
                                 <% let sum=0 %> 
+                                <% let id=0 %> 
+                                
                                   <% movie?.reviews.forEach(review =>{ %>
                                 <tr>
                                   <td>
@@ -83,15 +85,19 @@
                                           <input type="text" hidden value="review.movie">
                                         <button class="btn btn-primary mx-1">Delete</button>
                                         </form>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Edit</button>
+                                        
+                                        <% let test="test" %>
+                                        <% test=test.concat(id) %>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#<%= test %>"  aria-expanded="false" 
+                                        aria-controls="<%= test %>">Edit</button>
                                       </td>
                                 </tr>
                                 <tr>
                                     <form action="/reviews/<%=review._id %>?_method=PUT" method="POST">
                                     <td>
                                       <div class="col">
-                                        <div class="collapse multi-collapse" id="multiCollapseExample2">
-                                          
+                                        <div class="collapse multi-collapse" id="<%= test %>">
                                         <select name="rating" value="<%= review.rating %> "> 
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -106,25 +112,29 @@
                                     </td>
                                     <td style="word-wrap: break-word;min-width: 130px;max-width: 130px;">
                                       <div class="col">
-                                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                          <input type="text" name="content" value="<%=  review.content%>"> 
+                                        <div class="collapse multi-collapse" id="<%= test %>">
+                                          <input type="text" name="content" value="<%=review.content%>"> 
                                         </div>
                                       </div>
                                       
                                     </td>
                                     <td>
                                       <div class="col" align="end">
-                                        <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                          <button class="btn btn-primary ">Update</button>
+                                        <div class="collapse multi-collapse" id="<%= test %> ">
+                                          <button class="btn btn-primary">Update</button>
                                         </div>
                                       </div>
-
+                                      <div class="col" align="end">
+                                        <div class="collapse multi-collapse" id="test100">
+                                          <button class="btn btn-primary">Update</button>
+                                        </div>
+                                      </div>
                                     </td>
                                     </form>
                                   </tr>
                                   </td>  
  
-
+                                      <% id+=1 %> 
                                         <% } %>  
                                     <% }) %>
 
