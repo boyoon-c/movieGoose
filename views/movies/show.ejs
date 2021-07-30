@@ -66,10 +66,12 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                <% let sum=0 %> 
                                   <% movie?.reviews.forEach(review =>{ %>
                                 <tr>
                                   <td>
                                     (<%= review.rating %>/5)
+                                    <% sum += review.rating %> 
                                   </td>
                                   <td style="word-wrap: break-word;min-width: 300px;max-width: 300px;">
                                     <%= review.authorId.name %>: <%= review.content%>
@@ -79,7 +81,7 @@
                                   <% if (review.authorId._id.equals(user.profile._id)){ %>
                                         <form action="/reviews/<%=review._id %>?_method=DELETE" method="POST">
                                           <input type="text" hidden value="review.movie">
-                                        <button class="btn btn-light">Delete</button>
+                                        <button class="btn btn-primary mx-1">Delete</button>
                                         </form>
                                         <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Edit</button>
                                       </td>
@@ -111,9 +113,9 @@
                                       
                                     </td>
                                     <td>
-                                      <div class="col">
+                                      <div class="col" align="end">
                                         <div class="collapse multi-collapse" id="multiCollapseExample1">
-                                          <button class="btn btn-light">Update</button>
+                                          <button class="btn btn-primary ">Update</button>
                                         </div>
                                       </div>
 
@@ -125,6 +127,11 @@
 
                                         <% } %>  
                                     <% }) %>
+
+                                    <%# Average Rating calculation %> 
+                                    <% let numReviews=movie?.reviews.length %> 
+                                    <h3 align="center" class=bg-dark>Average Rating: <%= (sum/numReviews).toFixed(2) %> </h1>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -136,7 +143,7 @@
                 </div>
             </div> 
             <div class="col mt-4 mb-4 ps-4">
-                <p class="fs-4 mb-4">Liked by</p>
+                <p class="fs-4 mb-4 text-light">Liked by</p>
                 <% movie?.collectedBy.forEach(profile => { %>
                     <a href="/profiles/<%= profile._id %>" class="text-white">
                       <p>
@@ -154,7 +161,7 @@
 
                   <!-- <form action="/reviews/<%#=movie._id%>" method="POST"> -->
                     <form action="/reviews/<%=movie.rawmId%>" method="POST">
-                        <div class="mb-3 mt-4">
+                        <div class="fs-4 mb-3 mt-4">
                             <label 
                               for="exampleFormControlTextarea1" 
                               class="form-label text-light"
@@ -179,11 +186,14 @@
 
                             </select>        
                           </div>
-                          <button class="btn btn-warning"type="submit">Add Review</button>
+                          <div align="center">
+                          <button class="btn btn-light" type="submit">Add Review</button>
+                          </div>
                     </form>
         </div>        
     </div>
     </section>
+
 </main>
 
 <%- include('../partials/footer') %>
