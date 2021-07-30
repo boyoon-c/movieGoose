@@ -59,3 +59,7 @@
   - An empty movie theater.(Getty Images): https://www.wbur.org/hereandnow/2020/12/14/movie-theaters-streaming-service 
 - Bob avatar image
   - numpaint website: https://numpaint.com/products/bob-the-minion-paint-by-numbers/
+
+### Credits
+
+Thanks [Jessi](https://github.com/jessq1) for giving me tips about using bootstrap!😉
