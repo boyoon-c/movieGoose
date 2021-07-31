@@ -2,14 +2,15 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <div class="container py-5 px-3">
+  <section class="pt-3 px-5">
+  <div class="container-fluid full-width-div mb-3" style="text-align:center">
     <div 
-      class="row col w-100"
+      class="row justify-content-md-center row-cols-auto g-4 px-5"
     >
       <% profiles.forEach(profile => { %>
         <div class="col">
           <a class="text-decoration-none" href="/profiles/<%= profile._id %>">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm mb-3" style="width:10em ;height:20em">
               <% if (profile.avatar) { %>
                 <img
                   class="card-img-top"
@@ -41,6 +42,7 @@
       <% }) %>
     </div>
   </div>
+</section>
 </main>
 
 <%- include('../partials/footer') %>
