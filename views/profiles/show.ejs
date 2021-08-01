@@ -104,14 +104,16 @@
                 >
                   Details
                 </a>
+                <% if (user.profile._id.toString() === profile._id.toString()){ %> 
                 <form action="/profiles/<%=profile._id%>?_method=DELETE" method="POST" style="display: inline; text-align: center">
                   <input type="text" name="title" hidden value="<%= movie.rawmId%>">
                   <button class="btn btn-danger">
                     Remove from Likes
                   </button>
                   </form>
+                  <% } %> 
                   <% if (user.profile._id.toString() !== profile._id.toString()){ %> 
-                  <form action="/profiles/<%=movie.rawmId%>/addToLikes" method="POST" class="mt-4 mb-4">
+                  <form action="/profiles/<%=movie.rawmId%>/addToLikes" method="POST" class="mt-2 mb-4" style="display: inline; text-align: center">
                       <input type="text" name="title" hidden value="<%= movie.title%>">
                       <input type="text" name="rawmId" hidden value="<%= movie.rawmId %>">
                       <button class="btn btn-secondary">Add to Likes 👍</button>
