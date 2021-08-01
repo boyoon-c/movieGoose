@@ -5,10 +5,40 @@ import { MovieReview } from '../models/movieReview.js'
 export {
     index,
     show,
+    addToLikes,
     deleteLikes as delete,
     edit,
     update
 }
+
+function addToLikes(req,res){
+  console.log("reqdotbody", req.body)
+  console.log(req.params.id)
+
+  req.body.collectedBy=req.user.profile._id
+  Movie.findOne({rawmId: req.params.id})
+  .then((movie)=>{
+    if (movie){
+      if (!movie.collectedBy.includes(req.user.profile._id)){
+      movie.collectedBy.push(req.user.profile._id)
+      } 
+      movie.save()
+      .then(()=>{
+        res.redirect(`/profiles/${req.user.profile._id}`)
+      }) 
+    } else {
+      
+        res.redirect(`/profiles/${req.user.profile._id}`)
+      
+    }
+  })
+  .catch(err =>{
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+
 function update(req, res) {
     Profile.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then((profile) => {
@@ -23,10 +53,14 @@ function update(req, res) {
 function edit(req, res) {
     Profile.findById(req.params.id)
     .then(profile => {
+      if (req.user.profile._id.toString()=== profile._id.toString()){
       res.render('profiles/edit', {
         title: `Editing ${profile.name}'s profile`,
         profile
       })
+    } else {
+      res.redirect(`/profile/${profile._id}`)
+    }
     })
     .catch(err => {
       console.log(err)

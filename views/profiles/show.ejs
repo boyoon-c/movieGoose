@@ -110,6 +110,13 @@
                     Remove from Likes
                   </button>
                   </form>
+                  <% if (user.profile._id.toString() !== profile._id.toString()){ %> 
+                  <form action="/profiles/<%=movie.rawmId%>/addToLikes" method="POST" class="mt-4 mb-4">
+                      <input type="text" name="title" hidden value="<%= movie.title%>">
+                      <input type="text" name="rawmId" hidden value="<%= movie.rawmId %>">
+                      <button class="btn btn-secondary">Add to Likes 👍</button>
+                  </form>               
+                <% } %> 
               </div>
             </div>
           </div>

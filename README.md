@@ -62,4 +62,4 @@
 
 ### Credits
 
-Thanks [Jessi](https://github.com/jessq1) for giving me tips about using bootstrap!😉
+Thanks [Jessie](https://github.com/jessq1) for giving me tips about using bootstrap!😉
