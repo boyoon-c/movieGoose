@@ -3,8 +3,8 @@
 ## Description
 
 **movie goose**, a movie-search and movie-review web application, has two main features: 
-1) it provides basic information about movies, such as their respective genre, casts, directors, and plot, as well as its unique collection of the reviews created by its users, and
-2) users could add their favorite movies to their "likes list" and create/update/delete reviews about a movie so that other users that are also using the application could check them out. 
+1) it provides basic information about movies, such as their respective genre, casts, directors, and plot, along with a unique collection of reviews created by its users, and
+2) users can add their favorite movies to their "likes list" and create/update/delete reviews about a movie. Other users on the platform can check them out. 
 
 
 ## Getting Started
